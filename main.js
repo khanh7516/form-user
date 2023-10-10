@@ -27,7 +27,7 @@ $("#form").validate({
     repassword: {
       required: true,
       minlength: 6,
-      passwordMatch: true, // Sử dụng quy tắc tùy chỉnh passwordMatch
+      equalTo: "#password", // Sử dụng quy tắc tùy chỉnh passwordMatch
     },
   },
   messages: {
@@ -57,7 +57,7 @@ $("#form").validate({
     repassword: {
       required: "Confirm password không được để trống",
       minlength: "Pasword phải có ít nhất 6 ký tự",
-      //   passwordMatch: "Confirm password không chính xác",
+      equalTo: "Confirm password không chính xác",
     },
   },
   errorElement: "span",
@@ -82,15 +82,15 @@ formEl.addEventListener("submit", (e) => {
   alert("Submit thành công");
 });
 
-$.validator.addMethod(
-  "passwordMatch",
-  function (value, element) {
-    // Lấy giá trị của trường "password" và "repassword"
-    var password = $("#password").val();
-    var repassword = value;
+// $.validator.addMethod(
+//   "passwordMatch",
+//   function (value, element) {
+//     // Lấy giá trị của trường "password" và "repassword"
+//     var password = $("#password").val();
+//     var repassword = value;
 
-    // So sánh hai giá trị
-    return password === repassword;
-  },
-  "Confirm password không chính xác"
-);
+//     // So sánh hai giá trị
+//     return password === repassword;
+//   },
+//   "Confirm password không chính xác"
+// );
